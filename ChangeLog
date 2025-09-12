@@ -1,3 +1,5 @@
+Version 3.0.1 (12 Sep 2025)
+  * fixed an issue for univariate xreg
 
 Version 3.0 (20 may 2025)
   * included MSIS and ACD metrics for prediction interval evaluation

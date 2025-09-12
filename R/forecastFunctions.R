@@ -114,6 +114,8 @@ twoTL <- function(y, h, level,
 
 	if(!is.null(xreg)){
 
+	  xreg = as.matrix(xreg)
+
 		if(nrow(xreg) != n+h)
 			stop("ERROR: xreg must be a matrix with nrow(xreg) == length(y)+h");
 
@@ -307,7 +309,7 @@ twoTL <- function(y, h, level,
 
 		if(!is.null(xreg)){
 			reg = par[-(1:3)]
-			y_reg  = as.numeric(xreg[-(1:n),] %*% reg)
+			y_reg  = as.numeric(xreg[-(1:n),,drop=F] %*% reg)
 			quantiles = quantiles + y_reg
 
 			matForec.sample = matForec.sample + y_reg;
