@@ -487,7 +487,8 @@ bagged_twoTL <- function(y, h, level,
                         bs_bootstrap = NULL, # bootstrap block size
                         s_type, ## s_type = c("additive","multiplicative","stl")
                         s_test, ## s_test = c("default","unit_root",TRUE, FALSE)
-                        par_ini, estimation, lower, upper, opt.method, dynamic, xreg=NULL,
+                        par_ini, estimation, lower, upper, opt.method, dynamic,
+                        xreg=NULL, ## Disabled as it is not handled in bld.mbb.bootstrap()
                         lambda=NULL  ## parameter of Box-Cox transformation
                         )
 {
@@ -559,13 +560,13 @@ bagged_dotm <- function(y, h=5, level=c(80,90,95),
                  s_test="default",
                  lambda=NULL, par_ini=c(y[1]/2, 0.5, 2), estimation=TRUE,
                  lower=c(-1e+10, 0.1, 1.0), upper=c(1e+10, 0.99, 1e+10),
-                 opt.method="Nelder-Mead", xreg=NULL ){
+                 opt.method="Nelder-Mead" ){
 
   out =  bagged_twoTL( y=y, h=h, level=level,
                        num_bootstrap = num_bootstrap, bs_bootstrap = bs_bootstrap,
                        s_type=s_type, s_test=s_test, par_ini=par_ini,
                        estimation=estimation, lower=lower, upper=upper, opt.method=opt.method,
-                       dynamic=TRUE, xreg=xreg, lambda=lambda)
+                       dynamic=TRUE, xreg=NULL, lambda=lambda)
 
   out$method = "Dynamic Optimised Theta Model"
   if(out$num_bootstrap > 1){ out$method = paste("Bagged", out$method); }
@@ -579,13 +580,13 @@ bagged_dstm <- function(y, h=5, level=c(80,90,95),
                  s_type="multiplicative", s_test="default",
                  lambda=NULL, par_ini=c(y[1]/2, 0.5),estimation=TRUE,
                  lower=c(-1e+10, 0.1), upper=c(1e+10, 0.99),
-                 opt.method="Nelder-Mead", xreg=NULL){
+                 opt.method="Nelder-Mead"){
 
   out =  bagged_twoTL( y=y, h=h, level=level,
                        num_bootstrap = num_bootstrap, bs_bootstrap = bs_bootstrap,
                        s_type=s_type, s_test=s_test, par_ini=c(par_ini,2.0),
                        estimation=estimation, lower=c(lower, 1.99999), upper=c(upper, 2.00001),
-                       opt.method=opt.method, dynamic=TRUE, xreg=xreg, lambda=lambda)
+                       opt.method=opt.method, dynamic=TRUE, xreg=NULL, lambda=lambda)
 
   out$method = "Dynamic Standard Theta Model"
   if(out$num_bootstrap > 1){ out$method = paste("Bagged", out$method); }
@@ -602,13 +603,13 @@ bagged_otm <- function(y, h=5, level=c(80,90,95),
                 s_type="multiplicative", s_test="default",
                 lambda=NULL, par_ini=c(y[1]/2, 0.5, 2.0), estimation=TRUE,
                 lower=c(-1e+10, 0.1, 1.0), upper=c(1e+10, 0.99, 1e+10),
-                opt.method="Nelder-Mead", xreg=NULL){
+                opt.method="Nelder-Mead"){
 
   out = bagged_twoTL( y=y, h=h, level=level,
                       num_bootstrap = num_bootstrap, bs_bootstrap = bs_bootstrap,
                       s_type=s_type, s_test=s_test,
                       par_ini=par_ini, estimation=estimation, lower=lower,
-                      upper=upper, opt.method=opt.method, dynamic=FALSE, xreg=xreg,
+                      upper=upper, opt.method=opt.method, dynamic=FALSE, xreg=NULL,
                       lambda=lambda)
 
   out$method = "Optimised Theta Model"
@@ -623,14 +624,14 @@ bagged_stm <- function(y, h=5, level=c(80,90,95),
                 s_type="multiplicative", s_test="default",
                 lambda=NULL, par_ini=c(y[1]/2, 0.5), estimation=TRUE,
                 lower=c(-1e+10, 0.1), upper=c(1e+10, 0.99),
-                opt.method="Nelder-Mead", xreg=NULL){
+                opt.method="Nelder-Mead"){
 
   out = bagged_twoTL( y=y, h=h, level=level,
                       num_bootstrap = num_bootstrap, bs_bootstrap = bs_bootstrap,
                       s_type=s_type, s_test=s_test,
                       par_ini=c(par_ini,2.0), estimation=estimation,
                       lower=c(lower,1.99999), upper=c(upper,2.00001),
-                      opt.method=opt.method, dynamic=FALSE, xreg=xreg, lambda=lambda)
+                      opt.method=opt.method, dynamic=FALSE, xreg=NULL, lambda=lambda)
 
   out$method = "Standard Theta Model"
   if(out$num_bootstrap > 1){ out$method = paste("Bagged", out$method); }
