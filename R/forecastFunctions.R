@@ -938,10 +938,7 @@ print.thetaModel <- function(x,...){
 	#if(x$tests[1,1] < 0.02){cat("\nWarning: According with the Teraesvirta Neural Network test with 98% of confidence, the unseasoned time series is not linearity in mean. This model may not be adequate.\n")}
 # 	if(is.null(x$num_bootstrap)){
 #   	if(x$tests[2,1] < 0.03){
-#   	  cat("\nWarning: According with the Shapiro-Wilk test with 97% of confidence,
-#       the unseasoned residuals do not follow the Normal distribution.
-#       The prediction intervals may not be adequate.
-#       Consider using the bagged version of this model.\n")
+#   	  cat("\nWarning: According to the Shapiro–Wilk test at the 97% confidence level, the deseasonalized residuals appear to deviate from normality. As a result, the prediction intervals may be less reliable. Consider using a bagged version of the model.\n")
 #   	}
 # 	}
 
@@ -1024,14 +1021,11 @@ print.summ <- function(x,...){
 	print(x$informationCriterions)
 
 	#if(x$tests[1,1] < 0.02){cat("\nWarning: According with the Teraesvirta Neural Network test with 98% of confidence, the unseasoned time series is not linearity in mean. This model may not be adequate.\n")}
-	if( is.null( x$num_bootstrap) ) {
-	  if(x$tests[2,1] < 0.03){
-	    cat("\nWarning: According with the Shapiro-Wilk test with 97% of confidence,
-      the unseasoned residuals do not follow the Normal distribution.
-      The prediction intervals may not be adequate.
-      Consider using the bagged version of this model.\n")
-	  }
-	}
+	# if( is.null( x$num_bootstrap) ) {
+	#   if(x$tests[2,1] < 0.03){
+	#     cat("\nWarning: According to the Shapiro–Wilk test at the 97% confidence level, the deseasonalized residuals appear to deviate from normality. As a result, the prediction intervals may be less reliable. Consider using a bagged version of the model.\n")
+	#   }
+	# }
 }
 
 #' @export
