@@ -936,14 +936,14 @@ print.thetaModel <- function(x,...){
 	print( round(mm, 4 ) )
 
 	#if(x$tests[1,1] < 0.02){cat("\nWarning: According with the Teraesvirta Neural Network test with 98% of confidence, the unseasoned time series is not linearity in mean. This model may not be adequate.\n")}
-	if(is.null(x$num_bootstrap)){
-  	if(x$tests[2,1] < 0.03){
-  	  cat("\nWarning: According with the Shapiro-Wilk test with 97% of confidence,
-      the unseasoned residuals do not follow the Normal distribution.
-      The prediction intervals may not be adequate.
-      Consider using the bagged version of this model.\n")
-  	}
-	}
+# 	if(is.null(x$num_bootstrap)){
+#   	if(x$tests[2,1] < 0.03){
+#   	  cat("\nWarning: According with the Shapiro-Wilk test with 97% of confidence,
+#       the unseasoned residuals do not follow the Normal distribution.
+#       The prediction intervals may not be adequate.
+#       Consider using the bagged version of this model.\n")
+#   	}
+# 	}
 
 }
 
