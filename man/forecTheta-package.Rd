@@ -14,8 +14,8 @@ This package provides functions for forecasting univariate time series using sev
 	\tabular{ll}{
 		Package: \tab forecTheta\cr
 		Type: \tab Package\cr
-		Version: \tab 3.0.2\cr
-		Date: \tab 2025-10-07\cr
+		Version: \tab 3.0.3\cr
+		Date: \tab 2026-06-15\cr
 		License: \tab GPL (>=2.0) \cr
 	}
 

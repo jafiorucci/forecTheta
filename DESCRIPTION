@@ -1,7 +1,7 @@
 Package: forecTheta
 Type: Package
 Title: Forecasting Time Series by Theta Models
-Version: 3.0.2
+Version: 3.0.3
 Maintainer: Jose Augusto Fiorucci <jafiorucci@gmail.com>
 Description: Routines for forecasting univariate time series using Theta Models.
 License: GPL (>= 2)
