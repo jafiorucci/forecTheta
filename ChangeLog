@@ -1,8 +1,11 @@
+Version 3.0.4 (30 Oct 2026)
+  * Fixed issue in regressor variable parameters within the stm and dstm. Thanks jdclarke5.
+
 Version 3.0.3 (15 Jun 2026)
   * Disabling the alert about residuals not be normal distribution.
 
 Version 3.0.2 (07 Oct 2025)
-  * Disabled xreg in bagged models as it is not handled in bld.mbb.bootstrap()
+  * Disabled xreg in bagged models as it is not handled in bld.mbb.bootstrap().
 
 Version 3.0.1 (12 Sep 2025)
   * fixed an issue for univariate xreg

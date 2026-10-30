@@ -429,12 +429,15 @@ dstm <- function(y, h=5, level=c(80,90,95),
                  s=NULL){
 
   out =  twoTL( y=y, h=h, level=level,
-                s_type=s_type, s_test=s_test, par_ini=c(par_ini,2.0),
-                estimation=estimation, lower=c(lower, 1.99999), upper=c(upper, 2.00001),
+                s_type=s_type, s_test=s_test,
+                par_ini= append(par_ini,2.0,after=2), #c(par_ini,2.0),
+                estimation=estimation,
+                lower= append(lower, 1.99999, after=2), #lower=c(lower, 1.99999),
+                upper= append(upper, 2.00001, after=2), #upper=c(upper, 2.00001),
                 opt.method=opt.method, dynamic=TRUE, xreg=xreg, lambda=lambda, s=s)
 
   out$method = "Dynamic Standard Theta Model"
-  out$par = as.matrix(out$par[c('ell0','alpha'),])
+  #out$par = as.matrix(out$par[c('ell0','alpha'),])
   colnames(out$par) = 'MLE'
 
   return(out)
@@ -466,13 +469,15 @@ stm <- function(y, h=5, level=c(80,90,95),
 
   out = twoTL( y=y, h=h, level=level,
                s_type=s_type, s_test=s_test,
-               par_ini=c(par_ini,2.0), estimation=estimation,
-               lower=c(lower,1.99999), upper=c(upper,2.00001),
+               par_ini= append(par_ini,2.0,after=2), #c(par_ini,2.0),
+               estimation=estimation,
+               lower= append(lower, 1.99999, after=2), #lower=c(lower, 1.99999),
+               upper= append(upper, 2.00001, after=2), #upper=c(upper, 2.00001),
                opt.method=opt.method, dynamic=FALSE, xreg=xreg, lambda=lambda,
                s=s)
 
   out$method = "Standard Theta Model"
-  out$par = as.matrix(out$par[c('ell0','alpha'),])
+  #out$par = as.matrix(out$par[c('ell0','alpha'),])
   colnames(out$par) = 'MLE'
 
   return(out)
